@@ -5,6 +5,10 @@ public class Node {
     private nodeColor color;
     private HashMap<Node, nodeColor> edges;
 
+    public enum nodeColor {
+        BLACK, GREEN, ORANGE, PINK, FINISH
+    }
+
     public nodeColor getColor() {
         return color;
     }
@@ -21,7 +25,11 @@ public class Node {
         return nodes;
     }
 
-    private enum nodeColor {
-        BLACK, GREEN, ORANGE, PINK, FINISH
+    public Node(nodeColor color) {
+        this.color = color;
+    }
+
+    public void setPaths(HashMap<Node, nodeColor> nodes){
+
     }
 }
