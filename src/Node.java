@@ -29,7 +29,7 @@ public class Node {
         this.color = color;
     }
 
-    public void setPaths(HashMap<Node, nodeColor> nodes){
-
+    public void addEdge(Node node, nodeColor nodeColor){
+        edges.put(node, nodeColor);
     }
 }
