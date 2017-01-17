@@ -1,16 +1,37 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class Node {
-    private nodeColor color;
-    private HashMap<Integer, nodeColor> edges;
+    //Color of the node
+    private Color color;
+    //Edge of the Node(Index, edgeColor)
+    private HashMap<Integer, Color> edges;
 
-    public enum nodeColor {
+    //Enum for colors
+    public enum Color {
         BLACK, GREEN, ORANGE, PINK, FINISH
     }
 
-    public nodeColor getColor() {
+    /**
+     * Constructor for Node
+     * @param color color of the Node
+     */
+    public Node(Color color) {
+        this.color = color;
+        this.edges = new HashMap<>();
+    }
+
+    /**
+     * Ads an edge to the Node
+     * @param nodeIndex index of where to the edge connects
+     * @param edgeColor color of the edge
+     */
+    public void addEdge(int nodeIndex, Color edgeColor){
+        edges.put(nodeIndex, edgeColor);
+    }
+
+    //Getter for color
+    public Color getColor() {
         return color;
     }
 
@@ -19,7 +40,7 @@ public class Node {
      * @param c the edge color
      * @return list of edge indexes
      */
-    public int[] getEdgesIndexes(nodeColor c) {
+    public int[] getEdgesIndexes(Color c) {
         ArrayList<Integer> edgesIndexes = new ArrayList<>();
 
         for (Integer n: edges.keySet()) {
@@ -30,7 +51,7 @@ public class Node {
 
         //if nothing is found return null
         if (edgesIndexes.size() < 1){
-            return null;
+            return new int[]{};
         }
 
         //convert the arraylist to array
@@ -42,13 +63,5 @@ public class Node {
             i++;
         }
         return smallIntArray;
-    }
-
-    public Node(nodeColor color) {
-        this.color = color;
-    }
-
-    public void addEdge(int nodeIndex, nodeColor nodeColor){
-        edges.put(nodeIndex, nodeColor);
     }
 }
