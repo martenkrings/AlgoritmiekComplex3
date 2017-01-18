@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
+/**
+ * Graph class that simulates a playing board
+ */
 public class Graph {
     //Finish is ALWAYS position 0
     private static final int FINISH = 0;
@@ -18,21 +20,21 @@ public class Graph {
 
     /**
      * Method that returns if the goal has been reached
-     *
-     * @param pathSoFar LinkedList of steps to take for a solution
+     * @param pathSoFar LinkedList of steps(states) to take for a solution
      * @return true if yes, false if no
      */
     public boolean goalIsReached(LinkedList<int[]> pathSoFar) {
         if (pathSoFar.size() == 0){
             return false;
         }
-        return pathSoFar.getLast()[0] == FINISH || pathSoFar.getLast()[1] == FINISH;
+
+        return isGoal(pathSoFar.getLast());
     }
 
     /**
      * Returns if a state is on the goal
      * @param state the state to check
-     * @return true if on goal else false
+     * @return true if on goal, else false
      */
     public boolean isGoal(int[] state){
         return state[0] == FINISH || state[1] == FINISH;
@@ -40,7 +42,6 @@ public class Graph {
 
     /**
      * Returns all neighbors that are accessible from the given state
-     *
      * @param state the state
      * @return neighbors that can be reached from current state
      */

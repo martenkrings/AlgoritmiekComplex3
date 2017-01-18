@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Node class that has a color and multiple edges
+ */
 public class Node {
     //Color of the node
     private Color color;
