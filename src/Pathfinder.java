@@ -8,8 +8,6 @@ import java.util.*;
 public class Pathfinder {
     //the Graph
     private Graph graph;
-    //All the visited states
-    private ArrayList<int[]> statesVisited;
 
     /**
      * Default constructor
@@ -27,7 +25,6 @@ public class Pathfinder {
      */
     public LinkedList<int[]> findPath (Graph graph, int p1Start, int p2Start){
         this.graph = graph;
-        statesVisited = new ArrayList<>();
         return dfs(new int[]{p1Start, p2Start}, new ArrayList<int[]>());
     }
 
@@ -46,6 +43,7 @@ public class Pathfinder {
             solution.add(start);
             return solution;
         }
+
         //Get all the neighbors of the state
         List<int[]> neighbors = graph.getNeighbors(start);
 
